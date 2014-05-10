@@ -1,16 +1,31 @@
-<IfModule mod_rewrite.c>
+#   Empêche la visualisation de l'arborescence, n'a rien à voir avec le masquage du « index.php ».
+#Options -Indexes
+#Options +FollowSymLinks
+
 RewriteEngine On
+RewriteBase /
+
+
+#Removes access to the system folder by users.
+#Additionally this will allow you to create a System.php controller,
+RewriteCond %{REQUEST_URI} ^system.*
+RewriteRule ^(.*)$ index.php?/$1 [nc,L]
+
+#When your application folder isn't in the system folder
+
+RewriteCond %{REQUEST_URI} ^application.*
+RewriteRule ^(.*)$ /index.php?/$1 [nc,L]
 
 #Checks to see if the user is attempting to access a valid file,
 #such as an image or css document, if this isn't true it sends the
 #request to index.php
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-#This last condition enables access to the images and css folders, and the robots.txt file
-RewriteCond $1 !^(index\.php|public|images|robots\.txt|css)
-RewriteRule ^(.*)$ index.php/$1 [L]
-</IfModule>
+RewriteRule ^(.*)$ index.php?/$1 [nc,L]
 
-<IfModule !mod_rewrite.c>
-    ErrorDocument 404 /index.php
-</IfModule>
+# If we don't have mod_rewrite installed, all 404's
+# can be sent to index.php, and everything works as normal.
+# Submitted by: ElliotHaughin   
+
+ErrorDocument 404 /index.php
