@@ -68,7 +68,7 @@ $db['default']['stricton'] = FALSE;
 */
 
 
-
+/*
 $db['default']['hostname'] = 'ns160.evxonline.net';
 $db['default']['username'] = 'wikidrunlogo';
 $db['default']['password'] = 'Mq3E9BcNJgKf';
@@ -84,8 +84,8 @@ $db['default']['dbcollat'] = 'utf8_unicode_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+*/
 
-/*
 $db['default']['hostname'] = 'mysql51-68.pro';
 $db['default']['username'] = 'wikidrunlogo';
 $db['default']['password'] = 'Mq3E9BcNJgKf';
@@ -101,7 +101,7 @@ $db['default']['dbcollat'] = 'utf8_unicode_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-*/
+
 
 
 /* End of file database.php */
